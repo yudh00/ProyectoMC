@@ -881,7 +881,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ProyectoMC">
       <AppShell theme={theme} onToggleTheme={handleThemeToggle} />
     </BrowserRouter>
   )
