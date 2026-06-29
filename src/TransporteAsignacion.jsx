@@ -178,10 +178,6 @@ export function EjercicioTransporte() {
           </table>
         </div>
 
-        <p style={{ fontSize: '0.82rem', color: 'var(--muted-text)' }}>
-          <em>Nota: la solución documentada en el PDF de resolución usa X₁₁=70, X₁₄=50 con Z=3,310 (iteraciones con penalizaciones ligeramente distintas). Ambas son soluciones iniciales válidas de Vogel.</em>
-        </p>
-
         <h4 className="exec-subtitle">Paso 4 — Método de Salto de Piedra (verificación de optimalidad)</h4>
         <p>
           Se evalúan las celdas vacías trazando circuitos cerrados alternando signos. Una celda

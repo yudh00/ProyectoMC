@@ -155,7 +155,7 @@ function ParteA() {
         <BlockMath math="\bar{x}_{\text{sim}} = \frac{330}{10} = 33 \text{ min}" />
 
         <div className="exec-conclusion">
-          El promedio simulado (33 min) es ligeramente inferior al teórico (34.5 min). En 10 corridas
+          <strong>Conclusión:</strong> El promedio simulado (33 min) es ligeramente inferior al teórico (34.5 min). En 10 corridas
           se produjo un escenario crítico de 60 min, pero la alta frecuencia de trámites rápidos
           compensó el promedio. La variabilidad justifica buffers de tiempo entre inspecciones.
         </div>
@@ -217,7 +217,7 @@ function ParteB() {
         <BlockMath math="\bar{x}_{\text{sim}} = \frac{1{,}150}{10} = 115 \text{ u/día}" />
 
         <div className="exec-conclusion">
-          El promedio simulado (115 u) se acerca al teórico (117.5 u). Sin embargo, en 4 de los
+          <strong>Conclusión:</strong> El promedio simulado (115 u) se acerca al teórico (117.5 u). Sin embargo, en 4 de los
           10 días la demanda superó las 100 u (saltó a 150 o 200), lo que habría causado escasez
           si se trabajara solo con la media. Esto justifica mantener un <strong>inventario de
           seguridad</strong> de marchamos.
@@ -278,7 +278,7 @@ function ParteC() {
         <BlockMath math="\bar{x}_{\text{sim}} = \frac{210}{10} = 21 \text{ días útiles}" />
 
         <div className="exec-conclusion">
-          El promedio empírico (21 días) coincidió exactamente con la teoría. Sin embargo, la
+          <strong>Conclusión:</strong> El promedio empírico (21 días) coincidió exactamente con la teoría. Sin embargo, la
           simulación revela que el <strong>70% de las fallas ocurren a los 20 días o antes</strong>.
           Esperar al promedio para revisar el equipo garantizaría averías constantes, justificando
           un mantenimiento preventivo más estricto (cada 15–18 días).

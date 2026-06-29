@@ -822,9 +822,6 @@ function TopicPage() {
       {/* ── SECCIÓN B: Ejercicios Resueltos ──────────────────────────────── */}
       <section className="panel">
         <h3>Ejercicios Resueltos Paso a Paso</h3>
-        <p className="hint" style={{ marginBottom: '0.75rem' }}>
-          Renderizado matemático con KaTeX (<InlineMath math="\LaTeX" />). Datos exactos de los documentos de clase.
-        </p>
         {ExerciseComp
           ? <ExerciseComp />
           : (
