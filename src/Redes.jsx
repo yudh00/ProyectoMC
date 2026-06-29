@@ -1,6 +1,7 @@
 // Redes.jsx — Sección B, Tema 3
 // Ejercicio A: Ruta más corta — Algoritmo de Dijkstra (A→F, 9 km)
 // Ejercicio B: Árbol de Expansión Mínima — Algoritmo de Kruskal (17 km)
+import { useEffect, useRef, useState } from 'react'
 import { BlockMath, InlineMath } from './Katex'
 
 const th = {
@@ -16,6 +17,10 @@ const td = {
   textAlign: 'center',
   fontSize: '0.8rem',
 }
+
+// Paleta secuencial: cada arista del camino/árbol recibe un color distinto
+// para que se distinga visualmente el orden en que se construyó la solución.
+const PATH_COLORS = ['#f472b6', '#fb923c', '#facc15', '#34d399', '#38bdf8', '#a78bfa']
 
 // ── Grafo SVG con 6 nodos ────────────────────────────────────────────────────
 // Nodos: A=Puerto Limón, B, C, D, E, F=Centro Distribución SJ
@@ -36,28 +41,86 @@ const EDGES = [
   ['E','F', 3],
 ]
 
-function GrafoSVG({ highlight = [], mstEdges = [] }) {
+// Hook que anima la revelación secuencial de un arreglo de aristas.
+function useTrace(length) {
+  const [revealed, setRevealed] = useState(length)
+  const [playing, setPlaying] = useState(false)
+  const timerRef = useRef(null)
+
+  useEffect(() => () => clearInterval(timerRef.current), [])
+
+  const trazar = () => {
+    clearInterval(timerRef.current)
+    setPlaying(true)
+    setRevealed(0)
+    let step = 0
+    timerRef.current = setInterval(() => {
+      step += 1
+      setRevealed(step)
+      if (step >= length) {
+        clearInterval(timerRef.current)
+        setPlaying(false)
+      }
+    }, 700)
+  }
+
+  return { revealed, playing, trazar }
+}
+
+function TrazarBoton({ onClick, disabled, children }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      style={{
+        display: 'block',
+        margin: '0.6rem auto 0',
+        padding: '0.4rem 1rem',
+        fontSize: '0.8rem',
+        fontWeight: 700,
+        color: 'var(--accent)',
+        background: 'var(--accent-soft)',
+        border: '1px solid var(--accent)',
+        borderRadius: '999px',
+        cursor: disabled ? 'default' : 'pointer',
+        opacity: disabled ? 0.6 : 1,
+      }}
+    >
+      {children}
+    </button>
+  )
+}
+
+function GrafoSVG({ sequence = [], revealCount = sequence.length }) {
+  const revealedSeq = sequence.slice(0, revealCount)
+  const colorFor = (a, b) => {
+    const idx = revealedSeq.findIndex(([x, y]) => (x === a && y === b) || (x === b && y === a))
+    return idx === -1 ? null : PATH_COLORS[idx % PATH_COLORS.length]
+  }
+  const touchedNodes = new Set(revealedSeq.flat())
+
   return (
     <svg viewBox="0 0 390 250" width="100%" style={{ maxWidth: 390, display: 'block', margin: '0.6rem auto' }}>
       {/* Aristas */}
       {EDGES.map(([a, b, w]) => {
         const na = NODES[a], nb = NODES[b]
         const key = `${a}-${b}`
-        const isHL = highlight.some(([x, y]) => (x === a && y === b) || (x === b && y === a))
-        const isMST = mstEdges.some(([x, y]) => (x === a && y === b) || (x === b && y === a))
+        const color = colorFor(a, b)
         const mx = (na.x + nb.x) / 2
         const my = (na.y + nb.y) / 2
         return (
           <g key={key}>
             <line
               x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
-              stroke={isHL ? '#f472b6' : isMST ? '#a78bfa' : 'var(--border-color)'}
-              strokeWidth={isHL || isMST ? 2.5 : 1.5}
+              stroke={color ?? 'var(--border-color)'}
+              strokeWidth={color ? 3 : 1.5}
+              style={{ transition: 'stroke 0.3s, stroke-width 0.3s' }}
             />
             <rect x={mx - 8} y={my - 8} width={16} height={13} rx={3} fill="var(--panel-bg)" opacity="0.85" />
             <text x={mx} y={my + 2} textAnchor="middle" fontSize="10"
-              fill={isHL ? '#f472b6' : isMST ? '#a78bfa' : 'var(--muted-text)'}
-              fontWeight={isHL || isMST ? '700' : '400'}>
+              fill={color ?? 'var(--muted-text)'}
+              fontWeight={color ? '700' : '400'}>
               {w}
             </text>
           </g>
@@ -67,14 +130,15 @@ function GrafoSVG({ highlight = [], mstEdges = [] }) {
       {Object.entries(NODES).map(([id, { x, y }]) => {
         const isStart = id === 'A'
         const isEnd = id === 'F'
-        const isPath = highlight.some(([a, b]) => a === id || b === id)
+        const isTouched = touchedNodes.has(id)
         return (
           <g key={id}>
             <circle
               cx={x} cy={y} r={18}
-              fill={isStart || isEnd ? 'var(--accent-soft)' : isPath ? 'rgba(164,215,252,0.18)' : 'var(--surface-soft)'}
-              stroke={isStart || isEnd ? 'var(--accent)' : 'var(--border-color)'}
-              strokeWidth={isStart || isEnd ? 2 : 1}
+              fill={isStart || isEnd ? 'var(--accent-soft)' : isTouched ? 'rgba(164,215,252,0.22)' : 'var(--surface-soft)'}
+              stroke={isStart || isEnd ? 'var(--accent)' : isTouched ? '#60a5fa' : 'var(--border-color)'}
+              strokeWidth={isStart || isEnd ? 2 : isTouched ? 2 : 1}
+              style={{ transition: 'fill 0.3s, stroke 0.3s' }}
             />
             <text x={x} y={y + 4} textAnchor="middle" fontSize="12" fontWeight="700"
               fill={isStart || isEnd ? 'var(--accent)' : 'var(--text-color)'}>
@@ -92,16 +156,21 @@ function GrafoSVG({ highlight = [], mstEdges = [] }) {
 // ── EJERCICIO A — Dijkstra ────────────────────────────────────────────────────
 function EjercicioDijkstra() {
   const pathEdges = [['A','C'], ['C','F']]
+  const { revealed, playing, trazar } = useTrace(pathEdges.length)
+
   return (
     <div>
       <div className="enunciado">
         <h4 className="exec-subtitle">Ejercicio A — Ruta Más Corta (Algoritmo de Dijkstra)</h4>
         <p>
-          Una empresa de transporte debe enviar mercancía desde el <strong>Puerto de Limón (A)</strong>{' '}
-          hasta el <strong>Centro de Distribución en San José (F)</strong>. Las conexiones son
+          Una empresa de transporte debe enviar mercancía desde el Puerto de Limón (A)
+          hasta el Centro de Distribución en San José (F). Las conexiones son
           bidireccionales. ¿Cuál es la ruta más eficiente?
         </p>
-        <GrafoSVG highlight={pathEdges} />
+        <GrafoSVG sequence={pathEdges} revealCount={revealed} />
+        <TrazarBoton onClick={trazar} disabled={playing}>
+          {playing ? 'Trazando…' : 'Trazar camino óptimo'}
+        </TrazarBoton>
         <div style={{ overflowX: 'auto', margin: '0.5rem 0' }}>
           <table style={{ borderCollapse: 'collapse', fontSize: '0.82rem' }}>
             <thead>
@@ -167,16 +236,21 @@ function EjercicioDijkstra() {
 // ── EJERCICIO B — Kruskal MST ────────────────────────────────────────────────
 function EjercicioKruskal() {
   const mstEdges = [['B','C'], ['C','D'], ['E','F'], ['C','F'], ['A','C']]
+  const { revealed, playing, trazar } = useTrace(mstEdges.length)
+
   return (
     <div>
       <div className="enunciado">
         <h4 className="exec-subtitle">Ejercicio B — Árbol de Expansión Mínima (Algoritmo de Kruskal)</h4>
         <p>
-          Usando el mismo grafo, encontrar el subconjunto de aristas que conecte{' '}
-          <strong>todos los nodos</strong> con la <strong>menor distancia total</strong>, sin
+          Usando el mismo grafo, encontrar el subconjunto de aristas que conecte
+          todos los nodos con la menor distancia total, sin
           formar ciclos (árbol de expansión mínima).
         </p>
-        <GrafoSVG mstEdges={mstEdges} />
+        <GrafoSVG sequence={mstEdges} revealCount={revealed} />
+        <TrazarBoton onClick={trazar} disabled={playing}>
+          {playing ? 'Construyendo…' : 'Trazar árbol de expansión'}
+        </TrazarBoton>
       </div>
 
       <div className="solucion">
@@ -213,7 +287,7 @@ function EjercicioKruskal() {
         </div>
 
         <h4 className="exec-subtitle">Árbol de Expansión Mínima</h4>
-        <p>Aristas seleccionadas: <strong>B–C, C–D, E–F, C–F, A–C</strong> (5 aristas para 6 nodos).</p>
+        <p>Aristas seleccionadas: B–C, C–D, E–F, C–F, A–C (5 aristas para 6 nodos).</p>
         <BlockMath math="\text{MST} = \{B\!-\!C,\; C\!-\!D,\; E\!-\!F,\; C\!-\!F,\; A\!-\!C\}" />
 
         <div className="exec-conclusion">

@@ -219,8 +219,8 @@ function ParteB() {
         <div className="exec-conclusion">
           <strong>Conclusión:</strong> El promedio simulado (115 u) se acerca al teórico (117.5 u). Sin embargo, en 4 de los
           10 días la demanda superó las 100 u (saltó a 150 o 200), lo que habría causado escasez
-          si se trabajara solo con la media. Esto justifica mantener un <strong>inventario de
-          seguridad</strong> de marchamos.
+          si se trabajara solo con la media. Esto justifica mantener un inventario de
+          seguridad de marchamos.
         </div>
       </div>
     </div>
@@ -279,7 +279,7 @@ function ParteC() {
 
         <div className="exec-conclusion">
           <strong>Conclusión:</strong> El promedio empírico (21 días) coincidió exactamente con la teoría. Sin embargo, la
-          simulación revela que el <strong>70% de las fallas ocurren a los 20 días o antes</strong>.
+          simulación revela que el 70% de las fallas ocurren a los 20 días o antes.
           Esperar al promedio para revisar el equipo garantizaría averías constantes, justificando
           un mantenimiento preventivo más estricto (cada 15–18 días).
         </div>

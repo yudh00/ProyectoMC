@@ -107,7 +107,7 @@ function EjercicioA() {
       <div className="enunciado">
         <h4 className="exec-subtitle">Ejercicio A — Gráfica <InlineMath math="\bar{X}" />-R: Cable Eléctrico</h4>
         <p>
-          Se mide el <strong>diámetro (mm)</strong> de un cable eléctrico. Se tomaron{' '}
+          Se mide el diámetro (mm) de un cable eléctrico. Se tomaron{' '}
           <InlineMath math="k=24" /> muestras de <InlineMath math="n=4" /> unidades por hora.
           Constantes para <InlineMath math="n=4" />: <InlineMath math="A_2=0.729" />,{' '}
           <InlineMath math="D_3=0" />, <InlineMath math="D_4=2.282" />.
@@ -167,7 +167,7 @@ function EjercicioA() {
 
         <div className="exec-conclusion">
           Todas las muestras se encuentran dentro de los límites de control. El proceso de
-          fabricación del cable eléctrico está <strong>bajo control estadístico</strong>.
+          fabricación del cable eléctrico está bajo control estadístico.
         </div>
       </div>
     </div>
@@ -209,7 +209,7 @@ function EjercicioB() {
 
       <div className="solucion">
         <h4 className="exec-subtitle">Cálculo de límites</h4>
-        <BlockMath math={`\\bar{p} = \\frac{\\sum d_i}{k \\cdot n} = \\frac{${WELD_TOTAL_DEF}}{21 \\times 500} = ${WELD_PBAR}`} />
+        <BlockMath math={`\\bar{p} = \\frac{\\sum_{i=1}^{k} d_i}{k \\cdot n} = \\frac{${WELD_TOTAL_DEF}}{21 \\times 500} = ${WELD_PBAR}`} />
         <BlockMath math={`\\sigma_p = \\sqrt{\\frac{\\bar{p}(1-\\bar{p})}{n}} = \\sqrt{\\frac{${WELD_PBAR}(${+(1-WELD_PBAR).toFixed(4)})}{500}} = ${WELD_SIGMA_P}`} />
         <div className="formula-list">
           <div className="formula-item">
@@ -231,10 +231,10 @@ function EjercicioB() {
 
         <p style={{ fontSize: '0.83rem' }}>
           Puntos fuera de control (en rojo): días{' '}
-          <strong>{outDays.join(', ')}</strong>.
+          {outDays.join(', ')}.
         </p>
         <div className="exec-conclusion">
-          El proceso de soldadura <strong>no está bajo control</strong>. Los días con mayor
+          El proceso de soldadura no está bajo control. Los días con mayor
           proporción de defectos (especialmente 1, 2, 3 y 7) requieren investigación de causas
           especiales: posible fatiga operativa los primeros días, fallas de insumos o variaciones
           de temperatura en el horno.
@@ -328,7 +328,7 @@ function EjercicioC() {
           outPoints={[10]}
         />
         <p style={{ fontSize: '0.83rem' }}>
-          La muestra <strong>10</strong> (X̄=38.6) excede el LCS=37.58 → se elimina y se recalcula.
+          La muestra 10 (X̄=38.6) excede el LCS=37.58 → se elimina y se recalcula.
         </p>
 
         <h4 className="exec-subtitle">Análisis Revisado (k=19, sin muestra 10)</h4>
@@ -391,7 +391,7 @@ function EjercicioC() {
         </div>
 
         <div className="exec-conclusion">
-          El proceso revisado está <strong>bajo control estadístico</strong>. Con{' '}
+          El proceso revisado está bajo control estadístico. Con{' '}
           <InlineMath math="C_p = 1.35 > 1.33" /> el proceso es <em>capaz</em>. La diferencia
           entre Cp y Cpk indica un leve descentramiento hacia el límite superior; se recomienda
           ajustar el punto medio del proceso para incrementar Cpk por encima de 1.33.

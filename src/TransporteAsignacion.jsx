@@ -39,7 +39,7 @@ export function EjercicioTransporte() {
           Una empresa distribuidora en Limón recibe mercancía en la zona portuaria de Moín y debe
           trasladarla a cuatro centros: Limón Centro (D1), Siquirres (D2), Guápiles (D3) y
           Talamanca (D4). Existen tres bodegas temporales con oferta limitada. La tabla muestra
-          la <strong>ganancia en miles de colones por tonelada</strong>. Maximice la ganancia total.
+          la ganancia en miles de colones por tonelada. Maximice la ganancia total.
         </p>
         <div style={{ overflowX: 'auto', margin: '0.6rem 0' }}>
           <table style={{ borderCollapse: 'collapse', fontSize: '0.82rem', minWidth: 340 }}>
@@ -209,7 +209,7 @@ export function EjercicioTransporte() {
             </tbody>
           </table>
         </div>
-        <p>Ningún <InlineMath math="\Delta_{ij} > 0" />, por lo tanto la solución es <strong>óptima</strong>. Los ceros indican soluciones alternativas con la misma ganancia.</p>
+        <p>Ningún <InlineMath math="\Delta_{ij} > 0" />, por lo tanto la solución es óptima. Los ceros indican soluciones alternativas con la misma ganancia.</p>
 
         <div className="exec-conclusion">
           <strong>Solución óptima documentada:</strong> O1→D1=70, O1→D4=50, O2→D2=10, O2→D3=80, O2→D4=10, O3→D2=80.
@@ -241,7 +241,7 @@ export function EjercicioAsignacion() {
         <p>
           Se dispone de 4 camiones que deben asignarse a 4 rutas (Limón Centro, Siquirres,
           Guápiles, Talamanca). Cada camión tiene un rendimiento distinto por ruta.
-          Objetivo: <strong>maximizar el rendimiento total</strong>.
+          Objetivo: maximizar el rendimiento total.
         </p>
         <div style={{ overflowX: 'auto', margin: '0.6rem 0' }}>
           <table style={{ borderCollapse: 'collapse', fontSize: '0.82rem' }}>

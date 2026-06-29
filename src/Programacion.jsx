@@ -83,8 +83,8 @@ function EjercicioEntero() {
       <div className="enunciado">
         <h4 className="exec-subtitle">Ejercicio A — Programación Entera Pura (Taller Textil)</h4>
         <p>
-          Un taller textil confecciona <strong>camisas</strong> (<InlineMath math="x_1" />) y{' '}
-          <strong>pantalones</strong> (<InlineMath math="x_2" />). Las cantidades deben ser enteras.
+          Un taller textil confecciona camisas (<InlineMath math="x_1" />) y
+          pantalones (<InlineMath math="x_2" />). Las cantidades deben ser enteras.
           Recursos disponibles por semana:
         </p>
         <div style={{ overflowX: 'auto', margin: '0.6rem 0' }}>
@@ -176,7 +176,7 @@ function EjercicioEntero() {
         </div>
 
         <div className="exec-conclusion">
-          Producir <strong>4 camisas y 3 pantalones</strong> por semana.
+          Producir 4 camisas y 3 pantalones por semana.
           <BlockMath math="Z^* = 60(4) + 50(3) = 240 + 150 = \$390 \text{ por semana}" />
           La tela y el tiempo son los cuellos de botella (recursos activos); los botones tienen holgura de 2 cajas.
         </div>
@@ -298,9 +298,9 @@ function EjercicioMetas() {
         </div>
 
         <div className="exec-conclusion">
-          Producir <strong>40 lotes de pan artesanal y 20 lotes de repostería</strong> por semana garantiza
+          Producir 40 lotes de pan artesanal y 20 lotes de repostería por semana garantiza
           la rentabilidad ($2,200) y el acuerdo laboral (160 h). El modelo demuestra que cumplir P1 y P2
-          genera un exceso inevitable de <strong>60 kWh</strong> sobre la meta ambiental (<InlineMath math="d_3^+ = 60" />).
+          genera un exceso inevitable de 60 kWh sobre la meta ambiental (<InlineMath math="d_3^+ = 60" />).
         </div>
       </div>
     </div>
@@ -315,7 +315,7 @@ function EjercicioNoLineal() {
         <h4 className="exec-subtitle">Ejercicio C — Programación No Lineal</h4>
         <p>
           Una fábrica produce dos bienes A (<InlineMath math="x" />) y B (<InlineMath math="y" />)
-          con ingresos de rendimiento decreciente. Se busca <strong>maximizar el beneficio total</strong>.
+          con ingresos de rendimiento decreciente. Se busca maximizar el beneficio total.
         </p>
         <div className="formula-list">
           <div className="formula-item">
@@ -408,8 +408,8 @@ function EjercicioNoLineal() {
         </div>
 
         <div className="exec-conclusion">
-          Producir <strong>17.5 unidades de A y 10.5 unidades de B</strong> maximiza el beneficio total en
-          <strong> $526.75</strong>. Ninguna restricción está activa, lo que indica que los recursos están
+          Producir 17.5 unidades de A y 10.5 unidades de B maximiza el beneficio total en
+          $526.75. Ninguna restricción está activa, lo que indica que los recursos están
           holgados; el límite lo impone la <em>elasticidad de la demanda</em> (rendimiento decreciente), no la capacidad.
         </div>
       </div>

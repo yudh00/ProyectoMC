@@ -48,6 +48,17 @@
   margin-bottom: 0.75rem;
 }
 
+.university {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.course-title {
+  font-size: 1.5rem;
+}
+
 .author {
   font-weight: 600;
 }

@@ -129,7 +129,7 @@ export default function Markov() {
         <h4 className="exec-subtitle">Cadenas de Markov — Competencia de Supermercados en Limón</h4>
         <p>
           En el mercado de supermercados de la provincia de Limón compiten tres cadenas:
-          <strong> Masxmenos (M)</strong>, <strong>Greit (G)</strong> y <strong>Líder (L)</strong>.
+          Masxmenos (M), Greit (G) y Líder (L).
           Un estudio reveló las probabilidades de que un cliente cambie de supermercado cada periodo.
           Se tiene la distribución inicial de cuotas de mercado y la matriz de transición.
         </p>
@@ -140,10 +140,10 @@ export default function Markov() {
       <div className="solucion">
         <h4 className="exec-subtitle">Datos del Modelo</h4>
 
-        <p><strong>Estado inicial</strong> <InlineMath math="\pi^{(0)}" />:</p>
+        <p>Estado inicial <InlineMath math="\pi^{(0)}" />:</p>
         <BlockMath math="\pi^{(0)} = [0.45,\; 0.35,\; 0.20]" />
 
-        <p><strong>Matriz de transición</strong> <InlineMath math="P" />:</p>
+        <p>Matriz de transición <InlineMath math="P" />:</p>
         <div style={{ overflowX: 'auto', margin: '0.6rem 0' }}>
           <table style={{ borderCollapse: 'collapse', fontSize: '0.82rem' }}>
             <thead>
@@ -272,7 +272,7 @@ export default function Markov() {
         <BarrasEstado datos={[0.4924, 0.3409, 0.1667]} title="Estado estacionario (largo plazo)" />
 
         <div className="exec-conclusion">
-          A largo plazo, <strong>Masxmenos consolidará el 49.24%</strong> del mercado de Limón,
+          A largo plazo, Masxmenos consolidará el 49.24% del mercado de Limón,
           Greit el 34.09% y Líder el 16.67%, independientemente de la distribución inicial.
           Estas proporciones permanecen estables mientras no cambien las probabilidades de transición.
           Para que Líder mejore su posición, debe reducir su tasa de abandono (actualmente 25%).

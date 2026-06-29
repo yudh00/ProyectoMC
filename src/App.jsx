@@ -72,39 +72,38 @@ function ResumenTema1() {
         ruta. Una condición indispensable es que la oferta total sea igual a la
         demanda total; cuando no ocurre así, se agrega una fila o columna
         ficticia con valor cero para equilibrar el modelo. Para obtener una
-        solución inicial de calidad, se aplica el{' '}
-        <strong>Método de Aproximación de Vogel</strong>, que calcula
-        penalizaciones por fila y columna como la diferencia entre los dos
-        menores costos disponibles, asignando primero donde el costo de
-        equivocarse es mayor. Una vez obtenida esa solución, se verifica su
-        optimalidad con el <strong>Método de Salto de Piedra en Piedra</strong>,
-        que evalúa cada celda vacía trazando circuitos cerrados alternando
-        signos positivos y negativos; si ningún circuito mejora el resultado,
-        la solución es óptima.
+        solución inicial de calidad, se aplica el Método de Aproximación de
+        Vogel, que calcula penalizaciones por fila y columna como la
+        diferencia entre los dos menores costos disponibles, asignando
+        primero donde el costo de equivocarse es mayor. Una vez obtenida esa
+        solución, se verifica su optimalidad con el Método de Salto de Piedra
+        en Piedra, que evalúa cada celda vacía trazando circuitos cerrados
+        alternando signos positivos y negativos; si ningún circuito mejora el
+        resultado, la solución es óptima.
       </p>
 
       <h4 className="exec-subtitle">¿Qué es el Modelo de Asignación?</h4>
       <p>
         Es un caso especial del modelo de transporte donde se asigna
         exactamente un recurso a cada tarea, como camiones a rutas o personas a
-        puestos. Se resuelve con el <strong>Método Húngaro</strong>, que
-        transforma la tabla original restando valores de fila y columna hasta
-        obtener ceros que permitan una asignación óptima sin conflictos.
+        puestos. Se resuelve con el Método Húngaro, que transforma la tabla
+        original restando valores de fila y columna hasta obtener ceros que
+        permitan una asignación óptima sin conflictos.
       </p>
 
       <h4 className="exec-subtitle">Fórmulas Clave</h4>
       <div className="formula-list">
         <div className="formula-item">
           <span className="formula-label">Función Objetivo</span>
-          <BlockMath math="\text{Min/Max}\; Z = \sum_{i}\sum_{j} c_{ij} \cdot x_{ij}" />
+          <BlockMath math="\text{Min/Max}\; Z = \sum_{i=1}^{m}\sum_{j=1}^{n} c_{ij} \cdot x_{ij}" />
         </div>
         <div className="formula-item">
           <span className="formula-label">Restricción de Oferta</span>
-          <BlockMath math="\sum_{j} x_{ij} \leq S_i" />
+          <BlockMath math="\sum_{j=1}^{n} x_{ij} \leq S_i" />
         </div>
         <div className="formula-item">
           <span className="formula-label">Restricción de Demanda</span>
-          <BlockMath math="\sum_{i} x_{ij} = D_j" />
+          <BlockMath math="\sum_{i=1}^{m} x_{ij} = D_j" />
         </div>
         <div className="formula-item">
           <span className="formula-label">No Negatividad</span>
@@ -149,11 +148,10 @@ function ResumenTema2() {
         ya que en la práctica no tiene sentido producir fracciones de camiones
         o personas. No es válido simplemente redondear el resultado de un
         modelo lineal continuo, porque eso puede generar soluciones
-        infactibles. Para resolverlo se usan algoritmos como{' '}
-        <strong>Branch and Bound</strong>, que divide el problema en
-        subproblemas más pequeños hasta encontrar la solución entera correcta,
-        o el <strong>Algoritmo de Gomory</strong>, que agrega restricciones de
-        corte para eliminar soluciones con decimales.
+        infactibles. Para resolverlo se usan algoritmos como Branch and Bound,
+        que divide el problema en subproblemas más pequeños hasta encontrar la
+        solución entera correcta, o el Algoritmo de Gomory, que agrega
+        restricciones de corte para eliminar soluciones con decimales.
       </p>
 
       <h4 className="exec-subtitle">¿Cómo funciona la Programación por Metas?</h4>
@@ -176,19 +174,18 @@ function ResumenTema2() {
         forma exponencial. El óptimo puede estar en un punto interior del
         espacio factible, no en un vértice como en la programación lineal. Se
         resuelve aplicando derivadas parciales e igualándolas a cero, o usando
-        herramientas como Excel Solver con el motor{' '}
-        <strong>GRG Nonlinear</strong>.
+        herramientas como Excel Solver con el motor GRG Nonlinear.
       </p>
 
       <h4 className="exec-subtitle">Fórmulas Clave</h4>
       <div className="formula-list">
         <div className="formula-item">
           <span className="formula-label">P. Entera — Función Objetivo</span>
-          <BlockMath math="\max Z = \sum_{j} c_j \cdot x_j \qquad x_j \geq 0,\; x_j \in \mathbb{Z}" />
+          <BlockMath math="\max Z = \sum_{j=1}^{n} c_j \cdot x_j \qquad x_j \geq 0,\; x_j \in \mathbb{Z}" />
         </div>
         <div className="formula-item">
           <span className="formula-label">P. Entera — Restricción de Recursos</span>
-          <BlockMath math="\sum_{j} a_{ij} \cdot x_j \leq b_i" />
+          <BlockMath math="\sum_{j=1}^{n} a_{ij} \cdot x_j \leq b_i" />
         </div>
         <div className="formula-item">
           <span className="formula-label">P. por Metas — Función Objetivo</span>
@@ -196,7 +193,7 @@ function ResumenTema2() {
         </div>
         <div className="formula-item">
           <span className="formula-label">P. por Metas — Restricción de Meta</span>
-          <BlockMath math="\sum_{j} a_{kj} \cdot x_j + d_k^- - d_k^+ = G_k" />
+          <BlockMath math="\sum_{j=1}^{n} a_{kj} \cdot x_j + d_k^- - d_k^+ = G_k" />
         </div>
         <div className="formula-item">
           <span className="formula-label">P. No Lineal — Función Objetivo</span>
@@ -241,21 +238,20 @@ function ResumenTema3() {
       <h4 className="exec-subtitle">¿Cuáles son las tres técnicas principales?</h4>
       <ul className="exec-list">
         <li>
-          <strong>Árbol de Expansión Mínima:</strong> responde a la pregunta
-          de cómo conectar todos los nodos de una red gastando el mínimo
-          posible, evitando ciclos redundantes.
+          Árbol de Expansión Mínima: responde a la pregunta de cómo conectar
+          todos los nodos de una red gastando el mínimo posible, evitando
+          ciclos redundantes.
         </li>
         <li>
-          <strong>Flujo Máximo:</strong> determina cuánta cantidad de un
-          recurso puede moverse desde un origen hasta un destino considerando
-          las capacidades de cada arco, e identifica los cuellos de botella
-          que limitan el flujo total.
+          Flujo Máximo: determina cuánta cantidad de un recurso puede moverse
+          desde un origen hasta un destino considerando las capacidades de
+          cada arco, e identifica los cuellos de botella que limitan el flujo
+          total.
         </li>
         <li>
-          <strong>Ruta Más Corta:</strong> resuelta con el{' '}
-          <strong>Algoritmo de Dijkstra</strong>, encuentra el camino más
-          eficiente entre un punto de salida y uno de llegada, ya sea medido
-          en distancia, tiempo o costo.
+          Ruta Más Corta: resuelta con el Algoritmo de Dijkstra, encuentra el
+          camino más eficiente entre un punto de salida y uno de llegada, ya
+          sea medido en distancia, tiempo o costo.
         </li>
       </ul>
 
@@ -313,25 +309,25 @@ function ResumenTema4() {
         el comportamiento de un sistema real a lo largo del tiempo dentro de
         un entorno virtual, esto con el objetivo de analizar cómo responde el
         sistema ante distintas condiciones sin necesidad de alterar la
-        operación real. Dentro de este campo, la{' '}
-        <strong>Simulación Monte Carlo</strong> es la técnica más utilizada en
-        gestión empresarial, ya que construye distribuciones de probabilidad a
-        partir de datos históricos y usa números aleatorios para simular el
-        comportamiento incierto de las variables del sistema.
+        operación real. Dentro de este campo, la Simulación Monte Carlo es la
+        técnica más utilizada en gestión empresarial, ya que construye
+        distribuciones de probabilidad a partir de datos históricos y usa
+        números aleatorios para simular el comportamiento incierto de las
+        variables del sistema.
       </p>
 
       <h4 className="exec-subtitle">¿Qué son los enfoques de avance del tiempo?</h4>
       <ul className="exec-list">
         <li>
-          <strong>Incremento de Tiempo Fijo:</strong> el reloj del modelo
-          avanza en intervalos constantes como cada hora o cada día, siendo
-          ideal para auditar inventarios al cierre de jornada.
+          Incremento de Tiempo Fijo: el reloj del modelo avanza en intervalos
+          constantes como cada hora o cada día, siendo ideal para auditar
+          inventarios al cierre de jornada.
         </li>
         <li>
-          <strong>Incremento del Evento Siguiente:</strong> el reloj salta
-          directamente al momento en que ocurre el próximo evento relevante,
-          ignorando los períodos de inactividad, lo que lo convierte en el
-          estándar para modelar sistemas de atención como colas de camiones.
+          Incremento del Evento Siguiente: el reloj salta directamente al
+          momento en que ocurre el próximo evento relevante, ignorando los
+          períodos de inactividad, lo que lo convierte en el estándar para
+          modelar sistemas de atención como colas de camiones.
         </li>
       </ul>
 
@@ -367,11 +363,11 @@ function ResumenTema4() {
         </div>
         <div className="formula-item">
           <span className="formula-label">Valor Esperado Teórico</span>
-          <BlockMath math="E(X) = \sum x_i \cdot P(x_i)" />
+          <BlockMath math="E(X) = \sum_{i=1}^{n} x_i \cdot P(x_i)" />
         </div>
         <div className="formula-item">
           <span className="formula-label">Promedio Simulado</span>
-          <BlockMath math="\bar{X}_{sim} = \dfrac{\displaystyle\sum X_{simulados}}{N}" />
+          <BlockMath math="\bar{X}_{sim} = \dfrac{\displaystyle\sum_{i=1}^{N} X_{simulados}}{N}" />
         </div>
         <div className="formula-item">
           <span className="formula-label">Frecuencia Simulada Ponderada</span>
@@ -405,30 +401,30 @@ function ResumenTema5() {
       <p>
         Se trata de un método cuantitativo que permite estudiar sistemas que
         cambian de estado a lo largo del tiempo usando probabilidades. Su
-        característica más importante es la{' '}
-        <strong>Propiedad de Markov</strong>: para predecir el estado futuro
-        del sistema solo importa el estado actual, sin importar todo el
-        historial previo. Esto lo hace computacionalmente eficiente y
-        conceptualmente claro, ya que toda la información relevante para el
-        pronóstico está contenida en el momento presente.
+        característica más importante es la Propiedad de Markov: para
+        predecir el estado futuro del sistema solo importa el estado actual,
+        sin importar todo el historial previo. Esto lo hace
+        computacionalmente eficiente y conceptualmente claro, ya que toda la
+        información relevante para el pronóstico está contenida en el
+        momento presente.
       </p>
 
       <h4 className="exec-subtitle">¿Cuáles son sus elementos fundamentales?</h4>
       <p>El modelo requiere dos piezas clave.</p>
       <ul className="exec-list">
         <li>
-          La primera es el <strong>vector inicial de estado{' '}
-          <InlineMath math="\pi^{(0)}" /></strong>, que describe cómo está
-          distribuido el sistema en el período cero, por ejemplo la
-          participación de mercado actual de cada empresa.
+          La primera es el vector inicial de estado{' '}
+          <InlineMath math="\pi^{(0)}" />, que describe cómo está distribuido
+          el sistema en el período cero, por ejemplo la participación de
+          mercado actual de cada empresa.
         </li>
         <li>
-          La segunda es la{' '}
-          <strong>Matriz de Probabilidades de Transición <InlineMath math="P" /></strong>,
-          que indica con qué probabilidad el sistema pasa de un estado a otro
-          en cada período. Una condición matemática estricta es que la suma de
-          cada fila de la matriz debe ser exactamente 1, ya que el sistema
-          siempre debe estar en algún estado posible.
+          La segunda es la Matriz de Probabilidades de Transición{' '}
+          <InlineMath math="P" />, que indica con qué probabilidad el sistema
+          pasa de un estado a otro en cada período. Una condición matemática
+          estricta es que la suma de cada fila de la matriz debe ser
+          exactamente 1, ya que el sistema siempre debe estar en algún estado
+          posible.
         </li>
       </ul>
 
@@ -490,10 +486,9 @@ function ResumenTema6() {
         lugar de esperar al final para detectar errores cuando ya no hay forma
         de corregirlos sin incurrir en pérdidas. La premisa fundamental es que
         ningún proceso produce resultados idénticos siempre, y esa
-        variabilidad puede tener dos orígenes: la <strong>causa común</strong>,
-        que es la variación normal y aceptable del proceso, y la{' '}
-        <strong>causa especial</strong>, que es algo anormal que está
-        afectando el sistema y que debe corregirse.
+        variabilidad puede tener dos orígenes: la causa común, que es la
+        variación normal y aceptable del proceso, y la causa especial, que es
+        algo anormal que está afectando el sistema y que debe corregirse.
       </p>
 
       <h4 className="exec-subtitle">
@@ -530,14 +525,13 @@ function ResumenTema6() {
       </p>
       <ul className="exec-list">
         <li>
-          El índice <strong><InlineMath math="C_p" /></strong> mide si la
-          variabilidad natural del proceso cabe dentro de los límites de
-          especificación, siendo aceptable cuando es mayor o igual a{' '}
-          <InlineMath math="1.33" />.
+          El índice <InlineMath math="C_p" /> mide si la variabilidad natural
+          del proceso cabe dentro de los límites de especificación, siendo
+          aceptable cuando es mayor o igual a <InlineMath math="1.33" />.
         </li>
         <li>
-          El índice <strong><InlineMath math="C_{pk}" /></strong> va más lejos
-          y verifica si además de ser capaz, el proceso está centrado: si{' '}
+          El índice <InlineMath math="C_{pk}" /> va más lejos y verifica si
+          además de ser capaz, el proceso está centrado: si{' '}
           <InlineMath math="C_{pk}" /> es menor que <InlineMath math="C_p" />,
           el proceso está desviado hacia uno de los límites y hay riesgo de
           producir defectos aunque <InlineMath math="C_p" /> sea aceptable.
@@ -548,11 +542,11 @@ function ResumenTema6() {
       <div className="formula-list">
         <div className="formula-item">
           <span className="formula-label">Media del Subgrupo y Rango</span>
-          <BlockMath math="\bar{X} = \frac{\displaystyle\sum x_i}{n} \qquad R = x_{\max} - x_{\min}" />
+          <BlockMath math="\bar{X} = \frac{\displaystyle\sum_{i=1}^{n} x_i}{n} \qquad R = x_{\max} - x_{\min}" />
         </div>
         <div className="formula-item">
           <span className="formula-label">Gran Media y Rango Promedio</span>
-          <BlockMath math="\bar{\bar{X}} = \frac{\displaystyle\sum \bar{X}_i}{k} \qquad \bar{R} = \frac{\displaystyle\sum R_i}{k}" />
+          <BlockMath math="\bar{\bar{X}} = \frac{\displaystyle\sum_{i=1}^{k} \bar{X}_i}{k} \qquad \bar{R} = \frac{\displaystyle\sum_{i=1}^{k} R_i}{k}" />
         </div>
         <div className="formula-item">
           <span className="formula-label">
@@ -578,7 +572,7 @@ function ResumenTema6() {
         </div>
         <div className="formula-item">
           <span className="formula-label">Proporción Promedio de Defectos</span>
-          <BlockMath math="\bar{p} = \frac{\displaystyle\sum d_i}{\displaystyle\sum n_i}" />
+          <BlockMath math="\bar{p} = \frac{\displaystyle\sum_{i=1}^{k} d_i}{\displaystyle\sum_{i=1}^{k} n_i}" />
         </div>
         <div className="formula-item">
           <span className="formula-label">Límites de Control — Gráfica p</span>
@@ -648,11 +642,16 @@ function SplashScreen() {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <p className="eyebrow">Portafolio Digital de Aprendizaje</p>
-        <h1>IF7200 Métodos Cuantitativos para la Toma de Decisiones</h1>
+        <p className="university">
+          Universidad de Costa Rica
+          <br />
+          Sede del Caribe
+        </p>
+        <h1 className="course-title">IF7200 Métodos Cuantitativos para la Toma de Decisiones</h1>
         <p className="author">Yudhansell Paniagua Montenegro</p>
         <p className="intro">
           Exploración de 6 temas fundamentales de análisis cuantitativo con
-          enfoque académico, visual e interactivo.
+          enfoque académico
         </p>
         <motion.button
           type="button"
@@ -747,11 +746,10 @@ function HomePage() {
         <h2>Bienvenido al entorno interactivo</h2>
         <p>
           Este espacio funciona como base para documentar análisis, modelos y
-          resultados de los seis temas del curso.
+          resultados de seis temas del curso: IF7200 Métodos Cuantitativos para la Toma de Decisiones.
         </p>
         <p>
-          Selecciona un tema en la barra superior para abrir su plantilla con
-          secciones listas para completar.
+          Selecciona un tema para ver su explicación detallada, fórmulas y ejercicios resueltos.
         </p>
       </section>
       <section className="cards-grid">
