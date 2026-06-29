@@ -36,6 +36,25 @@
   --shadow-md: 0 16px 36px rgba(15, 23, 42, 0.1);
 }
 
+/* Impresión / PDF: siempre en fondo blanco y texto oscuro, sin importar el tema activo */
+@media print {
+  :root[data-theme='dark'],
+  :root[data-theme='light'] {
+    --bg-color: #ffffff;
+    --text-color: #111827;
+    --muted-text: #4b5563;
+    --panel-bg: #ffffff;
+    --surface-soft: #f8fafc;
+    --surface-shine: #e2e8f0;
+    --border-color: #cbd5e1;
+    --accent: #1d4ed8;
+    --accent-2: #7c3aed;
+    --accent-soft: rgba(29, 78, 216, 0.08);
+    --shadow-sm: none;
+    --shadow-md: none;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

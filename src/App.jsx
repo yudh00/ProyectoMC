@@ -686,7 +686,7 @@ function ThemeToggle({ theme, onToggle }) {
 
 function TopBar({ theme, onToggle }) {
   return (
-    <header className="topbar">
+    <header className="topbar no-print">
       <div className="topbar-inner">
 
         {/* Botón Inicio — extremo izquierdo */}
@@ -795,10 +795,21 @@ function TopicPage() {
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.35 }}
     >
+      {/* ── Encabezado de impresión (solo visible en el PDF/impresión) ─────── */}
+      <div className="print-header">
+        <p>Elaborado por: Yudhansell Paniagua Montenegro</p>
+        <p>IF7200 Métodos Cuantitativos para la Toma de Decisiones — Tema {topic.id}: {topic.title}</p>
+      </div>
+
       {/* ── Encabezado del tema ───────────────────────────────────────────── */}
-      <section className="panel">
-        <p className="topic-number">Tema {topic.id}</p>
-        <h2>{topic.title}</h2>
+      <section className="panel topic-header-panel">
+        <div>
+          <p className="topic-number">Tema {topic.id}</p>
+          <h2>{topic.title}</h2>
+        </div>
+        <button type="button" className="download-pdf-btn no-print" onClick={() => window.print()}>
+          Descargar PDF
+        </button>
       </section>
 
       {/* ── SECCIÓN A: Resumen Ejecutivo ─────────────────────────────────── */}
@@ -837,7 +848,7 @@ function TopicPage() {
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer no-print">
       © 2026 Yudhansell Paniagua Montenegro — Todos los derechos reservados.
     </footer>
   )

@@ -483,3 +483,111 @@
     max-width: 10rem;
   }
 }
+
+/* ── 7. DESCARGA DE PDF POR SECCIÓN ───────────────────────────────────────── */
+
+.topic-header-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.download-pdf-btn {
+  flex-shrink: 0;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.download-pdf-btn:hover {
+  background: var(--accent);
+  color: var(--panel-bg);
+}
+
+/* Encabezado exclusivo del PDF: oculto en pantalla, visible solo al imprimir */
+.print-header {
+  display: none;
+}
+
+@media print {
+  /* Oculta toda la interfaz de navegación, no se incluye en el PDF */
+  .no-print {
+    display: none !important;
+  }
+
+  .print-header {
+    display: block;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #111827;
+  }
+
+  .print-header p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #111827;
+  }
+
+  .print-header p:first-child {
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  body, .app-shell, .page, .panel {
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .panel {
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 0.75rem !important;
+    break-inside: auto;
+  }
+
+  /* Evita que las tablas, fórmulas y gráficos se recorten por scroll horizontal:
+     todo el contenido se vuelve visible y se ajusta al ancho de la hoja impresa. */
+  [style*="overflow-x"],
+  .formula-item,
+  .katex-display,
+  .math-card,
+  .media-card {
+    overflow: visible !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+
+  table {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  svg {
+    max-width: 100% !important;
+  }
+
+  .formula-item,
+  .formula-list > *,
+  table,
+  tr,
+  .exec-conclusion {
+    break-inside: avoid;
+  }
+
+  h3, h4 {
+    break-after: avoid;
+  }
+}
+
+@page {
+  size: A4 landscape;
+  margin: 14mm 12mm;
+}

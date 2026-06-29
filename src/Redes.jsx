@@ -71,6 +71,7 @@ function TrazarBoton({ onClick, disabled, children }) {
   return (
     <button
       type="button"
+      className="no-print"
       onClick={onClick}
       disabled={disabled}
       style={{
